@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-cream: #f4f4f2; /* Paper/Concrete light gray */
+  --color-brand-accent: #416278; /* Muted Slate Blue */
+  --color-brand-ink: #1a1a1a;
+  
+  --font-display: "Syne", sans-serif;
+  --font-body: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --shadow-raw: 4px 4px 0px rgba(65, 98, 120, 0.2);
+  --shadow-urban: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --radius-urban: 1.5rem; /* Slightly less rounded for a "rawer" feel */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Outfit:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap');
+
+body {
+  @apply bg-brand-cream text-brand-ink font-body selection:bg-brand-accent selection:text-brand-ink;
+  scroll-behavior: smooth;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-ink rounded-full border-4 border-brand-cream hover:bg-brand-accent transition-colors;
+}
+
+.sticker {
+  @apply bg-brand-accent text-white px-4 py-1 rounded-sm font-black italic text-xs uppercase tracking-widest inline-block transform -rotate-1 hover:rotate-0 transition-transform cursor-default border border-brand-ink/10 shadow-raw;
+}
+
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05; /* Slightly more visible grain */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.urban-card {
+  @apply bg-white rounded-urban shadow-urban border border-brand-ink/10 hover:border-brand-accent transition-all duration-500;
+}
+
+@keyframes gusanito {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-gusanito {
+  animation: gusanito 4s linear infinite;
+}

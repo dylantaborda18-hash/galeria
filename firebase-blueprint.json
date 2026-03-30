@@ -1,0 +1,35 @@
+{
+  "entities": {
+    "ImageEdit": {
+      "title": "Image Edit",
+      "description": "A before and after image edit entry",
+      "type": "object",
+      "properties": {
+        "beforeUrl": {
+          "type": "string",
+          "description": "URL of the image before editing"
+        },
+        "afterUrl": {
+          "type": "string",
+          "description": "URL of the image after editing"
+        },
+        "label": {
+          "type": "string",
+          "description": "Description of the edit"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the entry was created"
+        }
+      },
+      "required": ["beforeUrl", "afterUrl", "createdAt"]
+    }
+  },
+  "firestore": {
+    "images": {
+      "schema": "ImageEdit",
+      "description": "Collection of image edits for the portfolio"
+    }
+  }
+}
